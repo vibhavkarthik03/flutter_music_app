@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate
               ],
               supportedLocales: S.delegate.supportedLocales,
-              onGenerateRoute: Router.generateRoute,
-              initialRoute: RouteName.splash,
+              onGenerateRoute: ModularRouter.generateRoute,
+              initialRoute: RouteName.splash
             ),
           );
         }));

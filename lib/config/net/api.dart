@@ -42,7 +42,7 @@ abstract class BaseHttp extends DioForNative {
 /// 添加常用Header
 class HeaderInterceptor extends InterceptorsWrapper {
   @override
-  onRequest(RequestOptions options) async {
+  onRequest(RequestOptions options,RequestInterceptorHandler handler) async {
     options.connectTimeout = 1000 * 45;
     options.receiveTimeout = 1000 * 45;
     options.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -55,7 +55,6 @@ class HeaderInterceptor extends InterceptorsWrapper {
     //options.headers['version'] = version;
     options.headers['X-Requested-With'] = 'XMLHttpRequest';
     //options.headers['platform'] = Platform.operatingSystem;
-    return options;
   }
 }
 

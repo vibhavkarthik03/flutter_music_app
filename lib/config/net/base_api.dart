@@ -20,20 +20,19 @@ class Http extends BaseHttp {
 
 class ApiInterceptor extends InterceptorsWrapper {
   @override
-  onRequest(RequestOptions options) async {
+  onRequest(RequestOptions options,RequestInterceptorHandler handler) async {
     debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
         ' queryParameters: ${options.queryParameters}' +
         ' data: ${options.data}');
-    return options;
   }
 
   @override
-  onResponse(Response response) {
+  onResponse(Response response,ResponseInterceptorHandler handler) {
     debugPrint('---api-response--->resp----->${response.data}');
     ResponseData respData = ResponseData.fromJson(json.decode(response.data));
     if (respData.success) {
       response.data = respData.data;
-      return http.resolve(response);
+     // return http.resolve(response);
     } else {
       if (respData.code == -1001) {
         // 如果cookie过期,需要清除本地存储的登录信息

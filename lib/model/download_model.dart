@@ -51,7 +51,7 @@ class DownloadModel with ChangeNotifier {
     }
   }
 
-  String getSongUrl(Song s) {
+  dynamic getSongUrl(Song s) {
     return 'http://music.163.com/song/media/outer/url?id=${s.songid}.mp3';
   }
 
